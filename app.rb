@@ -67,8 +67,8 @@ post('/tasks-form/') do
   description = params.fetch('description')
   due_date = params.fetch('due_date')
   list_id = params.fetch('list_id').to_i
-  task = Task.create({:description => description, :due_date => due_date, :list_id => list_id, :done => false})
-  if task.save()
+  @task = Task.create({:description => description, :due_date => due_date, :list_id => list_id, :done => false})
+  if @task.save()
     erb(:success)
   else
     erb(:errors)
