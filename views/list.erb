@@ -1,0 +1,18 @@
+<h3>Add Tasks for <%= @current_list_name %> </h3>
+
+<p>Here is a list of your tasks:</p>
+
+<% if @current_tasks == nil %>
+  <p>No tasks here!</p>
+<% else %>
+<ul>
+  <% @current_tasks.each() do |task| %>
+    <li><%= task.description %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<button type="button" name="button"><a href="/sort_tasks_asc/<%= @current_list_id %>">Sort Tasks By Date - Ascending Order</a></button>
+
+<p><a href="/lists/<%= @current_list_id %>/edit">Edit <%= @current_list %> list</a></p>
+<p><a href="/">Return to Main Page</a></p>
