@@ -69,10 +69,14 @@ post('/tasks-form/') do
   list_id = params.fetch('list_id').to_i
   @task = Task.create({:description => description, :due_date => due_date, :list_id => list_id, :done => false})
   if @task.save()
-    erb(:success)
+    redirect to("/task/#{@task.id}")
   else
     erb(:errors)
   end
+end
+
+get('/task/:id') do
+  erb(:task)
 end
 
 # Sorted Tasks Routing
